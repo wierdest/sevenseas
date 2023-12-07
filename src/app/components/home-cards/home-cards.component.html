@@ -54,7 +54,7 @@
                                 }
                                 
                                 <mat-card-actions>
-                                    <button [ngStyle]="{
+                                    <button class="drag-button" [ngStyle]="{
                                         'border-top-left-radius': $index === 0 ? '30px' : '0',
                                         'border-bottom-left-radius': (($index === 0 && currentScreenSize !== 'XSmall') || (currentScreenSize === 'XSmall' && $index === 6)) ? '30px' : '0px',
                                         'border-top-right-radius': (($index === 6 && currentScreenSize !== 'XSmall') || (currentScreenSize === 'XSmall' && $index === 0)) ? '30px' : '0px',
@@ -108,7 +108,7 @@
                                     </div>
                                 }
                             <mat-card-actions>
-                                <button style="align-self: center; width: 100%;" mat-button cdkDragHandle><mat-icon>drag_handle</mat-icon></button>
+                                <button class="drag-button" style="align-self: center; width: 100%;" mat-button cdkDragHandle><mat-icon>drag_handle</mat-icon></button>
                             </mat-card-actions>                            
                         </mat-card>
                         }
