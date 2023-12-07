@@ -1,0 +1,70 @@
+.home-background {
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+
+    border-radius: 50px; /* Adjust the radius to your preference */
+    width: 100vw;
+    height: 100vh;
+    box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+
+
+.diagonal-stripes {
+    background: repeating-linear-gradient(
+      -45deg,
+      #448AFF,
+      #448AFF 40px,
+      #2979FF 40px,
+      #2979FF 80px
+    );
+ 
+}
+
+.toolbar {
+    gap: 10px;
+}
+
+.toolbar-text {
+    font-family: Pacifico;
+}
+
+.sidenav {
+    padding: 20px;
+    border-radius: 50px; /* Adjust the radius to your preference */
+  }
+
+.sidenav-toggle {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2vh;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.sidenav-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 2vh;
+    gap:4vh;
+    margin-bottom: 4vh;
+}
+
+.sidenav-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2vw;
+}
+
+.logout-container {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 2vh;
+}
