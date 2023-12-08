@@ -42,6 +42,7 @@ export class HomeComponent {
       .subscribe(size => {
         this.currentScreenSize = size;
         // Do any additional logic based on the screen size change
+        console.log(this.currentScreenSize);
       });
   }
 

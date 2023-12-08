@@ -81,6 +81,8 @@
     width: 100%;
     min-height: 400px;
     background-color: white;
+    flex-shrink: 1;
+
 
 }
 .title {
@@ -98,10 +100,41 @@
     color: white;
     text-align: center;
     font-family: Pacifico;
-
     font-size: 48px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
    
+}
+
+/* Default styles for the container */
+.responsive-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.custom-card {
+    max-width: 40%; /* Set maximum width to 100% for smaller screens */
+    margin: 2%;
+    transform: none; /* Remove translateY transformation */
+    transform: translateY(-10%);
+    border-radius: 30px;
+
+}
+
+/* Media query for smaller screens - change styles for responsive layout */
+@media (max-width: 768px) {
+    .responsive-container {
+        flex-direction: column-reverse; /* Change to column layout for smaller screens */
+        align-items: center; /* Optional: Center the items */
+    }
+
+    .custom-card {
+        max-width: 100%; /* Set maximum width to 100% for smaller screens */
+        margin: 2%;
+        transform: none; /* Remove translateY transformation */
+        border-radius: 30px;
+
+    }
 }
