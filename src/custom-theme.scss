@@ -16,7 +16,7 @@ $sevenseas-primary: mat.define-palette(mat.$blue-palette, A400, A200, A100);
 $sevenseas-accent: mat.define-palette(mat.$green-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$sevenseas-warn: mat.define-palette(mat.$yellow-palette, A100);
+$sevenseas-warn: mat.define-palette(mat.$amber-palette, A200);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".

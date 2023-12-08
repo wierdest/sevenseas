@@ -1,0 +1,19 @@
+:host {
+    display: block; /* Ensure the component is treated as a block */
+  }
+  
+  div {
+    position: relative; /* Ensure relative positioning for the container */
+    width: 100%; /* Make the container take up the full width of its parent */
+    height: 100%; /* Make the container take up the full height of its parent */
+    display: flex; /* Use flexbox to align items within the container */
+    justify-content: center; /* Center the items horizontally */
+    align-items: center; /* Center the items vertically */
+  }
+  
+  canvas {
+    display: block; /* Ensure the canvas behaves as a block element */
+    width: 100%; /* Make the canvas take up the full width of its parent */
+    height: 100%; /* Make the canvas take up the full height of its parent */
+  }
+  

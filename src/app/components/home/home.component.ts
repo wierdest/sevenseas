@@ -4,27 +4,34 @@ import { RouterModule } from '@angular/router';
 
 import { Subject, takeUntil } from 'rxjs';
 
-
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider'
+import { MatCardModule } from '@angular/material/card';
+
 import { ScreenSizeService } from '../../services/screen-size.service';
 
 import { HomeCardsComponent } from '../home-cards/home-cards.component';
+import { ThreeDComponent } from '../three-d/three-d.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
-    CommonModule, RouterModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatDividerModule,
-    HomeCardsComponent,
+    CommonModule, RouterModule, 
+    MatSidenavModule, MatToolbarModule, 
+    MatIconModule, MatButtonModule, 
+    MatDividerModule, MatCardModule,
+    HomeCardsComponent, ThreeDComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+
+  toolbarSentence = "Seven seas ~ learn ~ from  ~ your ~ compass."
 
   currentScreenSize: string = '';
   private destroyed = new Subject<void>();

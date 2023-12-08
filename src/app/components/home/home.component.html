@@ -1,10 +1,14 @@
 <mat-drawer-container class="home-background diagonal-stripes">
     <mat-toolbar class="toolbar">
         <button (click)="drawer.toggle()" mat-icon-button aria-label="Menu icon button">
-          <mat-icon>menu</mat-icon>
+          <mat-icon>waves</mat-icon>
         </button>
-        <p style="font-family: 'Pacifico'; font-size: x-large;">Seven seas</p>
+        <p class="title">{{toolbarSentence}} </p>
         <span class="spacer"></span>
+        <!-- <button mat-fab extended color="warn">
+            <mat-icon color="primary" >explore</mat-icon>
+            <p class="title">Start your voyage</p>
+        </button> -->
         <button mat-stroked-button color="primary">New Session</button>
         <button mat-flat-button color="primary" >Save Session</button>
         <button [routerLink]="'/search'" mat-icon-button aria-label="Search icon button">
@@ -12,6 +16,38 @@
         </button>
     </mat-toolbar>
     <app-home-cards></app-home-cards>
+
+     <div style="display: flex; flex-direction: row; justify-content: flex-start;">
+        <app-three-d class="three-d-container diagonal-stripes-reversed-small"></app-three-d>
+        
+        <mat-card style="width: 40%; height: 400px; margin: 2%; transform:  translateY(-20%); border-radius: 30px;">
+            <mat-card-header class="large-title diagonal-stripes-reversed-small">
+                Row your own boat
+            </mat-card-header>
+            <mat-card-content class="title">
+                Rearrange the 7 Cs of learning to suit your needs!<br>
+                Flip the cards to learn more about the pillars that support this initiative!<br><br>
+            </mat-card-content>
+            <mat-card-actions align="end">
+                <div style="display: flex; gap:10px;"> 
+                    <button class="title" mat-fab extended color="warn">
+                        <mat-icon  color="primary" >explore</mat-icon>
+                        Start your voyage
+                    </button>
+                    <!-- <button mat-raised-button color="warn">Start your voyage</button> -->
+                    <button class="title" mat-fab extended color="primary">
+                        Learn more
+                    </button>
+                </div>
+            </mat-card-actions>
+           
+            
+    
+        </mat-card>
+    </div>
+
+   
+    
 
     <mat-drawer #drawer mode="over" class="sidenav">
         <div class="sidenav-toggle">
