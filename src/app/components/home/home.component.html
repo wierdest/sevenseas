@@ -1,44 +1,5 @@
 <mat-drawer-container class="home-background diagonal-stripes">
-    <mat-toolbar class="toolbar">
-       
-        @if(currentScreenSize !== 'XSmall' && currentScreenSize !== 'Small') {
-            <button (click)="drawer.toggle()" mat-icon-button aria-label="Menu icon button">
-                <mat-icon>waves</mat-icon>
-              </button>
-            <p class="title">{{toolbarLongSentence}} </p>
-            <span class="spacer"></span>
-            <button mat-stroked-button color="primary">New Session</button>
-            <button mat-flat-button color="primary" >Save Session</button>
-            <button [routerLink]="'/search'" mat-icon-button aria-label="Search icon button">
-                <mat-icon>search</mat-icon>
-            </button>
-        }@else {
-            <mat-toolbar-row>
-                <button (click)="drawer.toggle()" mat-icon-button aria-label="Menu icon button">
-                    <mat-icon>waves</mat-icon>
-                  </button>
-                <p class="title">{{toolbarShortSentence}} </p>
-            </mat-toolbar-row>
-        }
-
-        @if(currentScreenSize === 'XSmall' || currentScreenSize === 'Small') {
-            <mat-toolbar-row>
-                <button class="title" mat-fab extended color="warn">
-                    <mat-icon  color="primary" >explore</mat-icon>
-                    Start
-                </button>
-                <span class="spacer"></span>
-
-                <button mat-stroked-button color="primary">New Session</button>
-                <button mat-flat-button color="primary" >Save Session</button>
-                <button [routerLink]="'/search'" mat-icon-button aria-label="Search icon button">
-                    <mat-icon>search</mat-icon>
-                </button>
-            </mat-toolbar-row>
-
-        }
-       
-    </mat-toolbar>
+    <app-toolbar (drawerToggle)="drawer.toggle()"></app-toolbar>
     <app-home-cards></app-home-cards>
     <div class="responsive-container">
         <app-three-d class="three-d-container diagonal-stripes-reversed-small"></app-three-d>

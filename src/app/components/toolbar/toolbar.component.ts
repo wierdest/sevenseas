@@ -1,43 +1,31 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Output, OnDestroy } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
 import { RouterModule } from '@angular/router';
 
-import { Subject, takeUntil } from 'rxjs';
-
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDividerModule } from '@angular/material/divider'
-import { MatCardModule } from '@angular/material/card';
 
 import { ScreenSizeService } from '../../services/screen-size.service';
 
-import { HomeCardsComponent } from '../home-cards/home-cards.component';
-import { ThreeDComponent } from '../three-d/three-d.component';
-import { ToolbarComponent } from '../toolbar/toolbar.component';
-
 @Component({
-  selector: 'app-home',
+  selector: 'app-toolbar',
   standalone: true,
   imports: [
-    CommonModule, RouterModule, 
-    MatSidenavModule, MatToolbarModule, 
+    MatToolbarModule, RouterModule,
     MatIconModule, MatButtonModule, 
-    MatDividerModule, MatCardModule,
-    HomeCardsComponent, ThreeDComponent,
-    ToolbarComponent,
   ],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  templateUrl: './toolbar.component.html',
+  styleUrls: ['./toolbar.component.css']
 })
-export class HomeComponent {
-
+export class ToolbarComponent implements OnDestroy {
   toolbarLongSentence = "Seven seas ~ learn ~ from  ~ your ~ compass."
   toolbarShortSentence = "Seven seas: learn from your compass."
 
   currentScreenSize: string = '';
   private destroyed = new Subject<void>();
+
+  @Output() drawerToggle: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private screenSizeService: ScreenSizeService) {
     this.screenSizeService.currentScreenSize$
@@ -54,5 +42,8 @@ export class HomeComponent {
     this.destroyed.complete();
   }
 
-
+  onDrawerToggleClick() {
+    // Emit an event to notify the parent component to toggle the drawer
+    this.drawerToggle.emit(true);
+  }
 }
