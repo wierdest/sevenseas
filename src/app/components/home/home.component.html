@@ -8,10 +8,19 @@
                 <mat-card-header class="large-title diagonal-stripes-reversed-small">
                     Row your own boat
                 </mat-card-header>
-                <mat-card-content class="title">
-                    Rearrange the 7 Cs of learning to suit your needs!<br>
-                    Flip the cards to learn more about the pillars that support this initiative!<br><br>
-                </mat-card-content>
+
+                @if(currentScreenSize === 'XSmall' || currentScreenSize === 'Small') {
+                    <mat-card-content class="title">
+                        Flip the cards below to learn more about the pillars that support this initiative!<br><br>
+                    </mat-card-content>
+                }
+
+                @if(currentScreenSize !== 'XSmall' && currentScreenSize !== 'Small') {
+                    <mat-card-content class="title">
+                        Rearrange the 7 Cs of learning to suit your needs!<br>
+                        Flip the cards below to learn more about the pillars that support this initiative!<br><br>
+                    </mat-card-content>
+                }   
                 <mat-card-actions align="end">
                     <div style="display: flex; gap:10px;"> 
                         <button class="title" mat-fab extended color="warn">

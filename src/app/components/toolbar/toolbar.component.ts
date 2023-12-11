@@ -20,7 +20,7 @@ import { ScreenSizeService } from '../../services/screen-size.service';
 })
 export class ToolbarComponent implements OnDestroy {
   toolbarLongSentence = "Seven seas ~ learn ~ from  ~ your ~ compass."
-  toolbarShortSentence = "Seven seas: learn from your compass."
+  toolbarShortSentence = "7 Cs: find your compass."
 
   currentScreenSize: string = '';
   private destroyed = new Subject<void>();
