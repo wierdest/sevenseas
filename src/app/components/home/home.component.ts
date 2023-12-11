@@ -33,9 +33,6 @@ import { ToolbarComponent } from '../toolbar/toolbar.component';
 })
 export class HomeComponent {
 
-  toolbarLongSentence = "Seven seas ~ learn ~ from  ~ your ~ compass."
-  toolbarShortSentence = "Seven seas: learn from your compass."
-
   currentScreenSize: string = '';
   private destroyed = new Subject<void>();
 

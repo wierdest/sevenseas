@@ -1,121 +1,201 @@
 <div class="grid-container">
-    <mat-grid-list class="drag-list" cols="7" rowHeight="200px" cdkDropList (cdkDropListDropped)="drop($event)">
-        @for(tile of tiles; track $index) {
-            <mat-grid-tile [colspan]="tile.cols" [rowspan]="tile.rows">
-                <div class="flip-container" [ngClass]="{'flipped': tile.flipped, 'flipped-backward': tile.flipDirection === 'backward'}" (click)="flipCard($event, $index)">
-                    <div class="drag-box" style="width: 100%; height: auto;" cdkDrag  >
-                        @if($index === 0 || $index === 6) {
-
-                            @if(currentScreenSize !== 'XSmall') {
-                                <div class="custom-placeholder" *cdkDragPlaceholder 
-                                [ngStyle]="{
-                                    'border-top-left-radius': $index === 0 ? '30px' : '0',
-                                    'border-bottom-left-radius': (($index === 0 && currentScreenSize !== 'XSmall') || (currentScreenSize === 'XSmall' && $index === 6)) ? '30px' : '0px',
-                                    'border-top-right-radius': (($index === 6 && currentScreenSize !== 'XSmall') || (currentScreenSize === 'XSmall' && $index === 0)) ? '30px' : '0px',
-                                    'border-bottom-right-radius': $index === 6 ? '30px' : '0'
-                                }">
-                                </div>
-                            }@else {
-                                <div class="custom-placeholder-xsmall" *cdkDragPlaceholder 
-                                [ngStyle]="{
-                                    'border-top-left-radius': $index === 0 ? '30px' : '0',
-                                    'border-bottom-left-radius': (($index === 0 && currentScreenSize !== 'XSmall') || (currentScreenSize === 'XSmall' && $index === 6)) ? '30px' : '0px',
-                                    'border-top-right-radius': (($index === 6 && currentScreenSize !== 'XSmall') || (currentScreenSize === 'XSmall' && $index === 0)) ? '30px' : '0px',
-                                    'border-bottom-right-radius': $index === 6 ? '30px' : '0'
-                                }">
-                                </div>
-                            }
-                            
-                            <mat-card class="dashboard-card mat-elevation-z12"  matRipple  
-                                [ngStyle]="{
-                                    'border-top-left-radius': $index === 0 ? '30px' : '0',
-                                    'border-bottom-left-radius': (($index === 0 && currentScreenSize !== 'XSmall') || (currentScreenSize === 'XSmall' && $index === 6)) ? '30px' : '0px',
-                                    'border-top-right-radius': (($index === 6 && currentScreenSize !== 'XSmall') || (currentScreenSize === 'XSmall' && $index === 0)) ? '30px' : '0px',
-                                    'border-bottom-right-radius': $index === 6 ? '30px' : '0'
-                                }">
-                                @if(!tile.flipped) {
-                                    <div class="card-content">
-                                        <div class="image-container">
-                                            <img mat-card-image class="activity-image" [src]="'/assets/images/' + tile.type.imagePath" alt="Image representing {{ tile.type.title }}">
-                                        </div>
-                                        <div class="text-container">
-                                            <h1>{{$index + 1}}</h1>
-                                            <mat-card-title class="title">{{tile.type.title}}</mat-card-title>
-                                        </div>
-                                    </div>
-                                }@else {
-                                    <div class="card-content">
-                                        <div class="text-container">
-                                            <mat-card-title class="title">{{tile.type.title}}</mat-card-title>
-                                            <h4>{{$index + 1}}</h4>
-                                            <mat-card-subtitle style="padding: 2%;">{{tile.type.description}}</mat-card-subtitle>
-                                        </div>
-                                    </div>
-                                }
+    @if(currentScreenSize === 'XSmall' || currentScreenSize === 'Small') {
+        <mat-grid-list class="drag-list" cols="7" rowHeight="200px">
+            @for(tile of tiles; track $index) {
+                <mat-grid-tile [colspan]="tile.cols" [rowspan]="tile.rows">
+                    <div class="flip-container" [ngClass]="{'flipped': tile.flipped, 'flipped-backward': tile.flipDirection === 'backward'}" (click)="flipCard($event, $index)">
+                        <div class="drag-box" style="width: 100%; height: auto;"   >
+                            @if($index === 0 || $index === 6) {
                                 
-                                <mat-card-actions>
-                                    <button class="drag-button" [ngStyle]="{
+                                <mat-card class="dashboard-card mat-elevation-z12"   
+                                    [ngStyle]="{
                                         'border-top-left-radius': $index === 0 ? '30px' : '0',
                                         'border-bottom-left-radius': (($index === 0 && currentScreenSize !== 'XSmall') || (currentScreenSize === 'XSmall' && $index === 6)) ? '30px' : '0px',
                                         'border-top-right-radius': (($index === 6 && currentScreenSize !== 'XSmall') || (currentScreenSize === 'XSmall' && $index === 0)) ? '30px' : '0px',
                                         'border-bottom-right-radius': $index === 6 ? '30px' : '0'
-                                      }"
-                                        
-                                     style="align-self: center; width: 100%;" mat-button cdkDragHandle
-                                     ><mat-icon>drag_handle</mat-icon></button>
-                                </mat-card-actions>
+                                    }">
+                                    @if(!tile.flipped) {
+                                        <div class="card-content">
+                                            <div class="image-container">
+                                                <img mat-card-image class="activity-image" [src]="'/assets/images/' + tile.type.imagePath" alt="Image representing {{ tile.type.title }}">
+                                            </div>
+                                            <div class="text-container">
+                                                <h1>{{$index + 1}}</h1>
+                                                <mat-card-title class="title">{{tile.type.title}}</mat-card-title>
+                                            </div>
+                                        </div>
+                                    }@else {
+                                        <div class="card-content">
+                                            <div class="text-container">
+                                                <mat-card-title class="title">{{tile.type.title}}</mat-card-title>
+                                                <h4>{{$index + 1}}</h4>
+                                                <mat-card-subtitle style="padding: 2%;">{{tile.type.description}}</mat-card-subtitle>
+                                            </div>
+                                        </div>
+                                    }
+                                    
+                                    <mat-card-actions>
+                                        <mat-icon style="text-align: center; width: 100%;">flip</mat-icon>
+                                    </mat-card-actions>
 
+                                </mat-card>
+                    
+                            } @else {
+        
+                                <mat-card class="dashboard-card mat-elevation-z12" >
+                                    @if(!tile.flipped) {
+                                        <div class="card-content ">
+                                            <div class="image-container">
+                                                <img mat-card-image class="activity-image" [src]="'/assets/images/' + tile.type.imagePath" alt="Image representing {{ tile.type.title }}">
+                                            </div>
+                                            <div class="text-container">
+                                                <h1>{{$index + 1}}</h1>
+                                                <mat-card-title class="title">{{tile.type.title}}</mat-card-title>
+                                            </div>
+                                        </div>
+                                    }@else {
+                                        <div class="card-content">
+                                            <div class="text-container">
+                                                <mat-card-title class="title">{{tile.type.title}}</mat-card-title>
+                                                <h4>{{$index + 1}}</h4>
+                                                <mat-card-subtitle style="padding: 2%;">{{tile.type.description}}</mat-card-subtitle>
+                                            </div>
+                                        </div>
+                                    }
+                                    <mat-card-actions>
+                                        <mat-icon style="text-align: center; width: 100%;">flip</mat-icon>
+                                    </mat-card-actions>                
                             </mat-card>
-                
-                        } @else {
-                            @if(currentScreenSize !== 'XSmall') {
-                                <div class="custom-placeholder" *cdkDragPlaceholder 
-                                [ngStyle]="{
-                                    'border-top-left-radius': $index === 0 ? '30px' : '0',
-                                    'border-bottom-left-radius': (($index === 0 && currentScreenSize !== 'XSmall') || (currentScreenSize === 'XSmall' && $index === 6)) ? '30px' : '0px',
-                                    'border-top-right-radius': (($index === 6 && currentScreenSize !== 'XSmall') || (currentScreenSize === 'XSmall' && $index === 0)) ? '30px' : '0px',
-                                    'border-bottom-right-radius': $index === 6 ? '30px' : '0'
-                                }">
-                                </div>
-                            }@else {
-                                <div class="custom-placeholder-xsmall" *cdkDragPlaceholder 
-                                [ngStyle]="{
-                                    'border-top-left-radius': $index === 0 ? '30px' : '0',
-                                    'border-bottom-left-radius': (($index === 0 && currentScreenSize !== 'XSmall') || (currentScreenSize === 'XSmall' && $index === 6)) ? '30px' : '0px',
-                                    'border-top-right-radius': (($index === 6 && currentScreenSize !== 'XSmall') || (currentScreenSize === 'XSmall' && $index === 0)) ? '30px' : '0px',
-                                    'border-bottom-right-radius': $index === 6 ? '30px' : '0'
-                                }">
-                                </div>
                             }
-                            <mat-card class="dashboard-card mat-elevation-z12" matRipple >
-                                @if(!tile.flipped) {
-                                    <div class="card-content ">
-                                        <div class="image-container">
-                                            <img mat-card-image class="activity-image" [src]="'/assets/images/' + tile.type.imagePath" alt="Image representing {{ tile.type.title }}">
-                                        </div>
-                                        <div class="text-container">
-                                            <h1>{{$index + 1}}</h1>
-                                            <mat-card-title class="title">{{tile.type.title}}</mat-card-title>
-                                        </div>
+                        </div>
+                    </div>
+                </mat-grid-tile>
+            }
+        </mat-grid-list>
+    }
+
+    @if(currentScreenSize !== 'XSmall' && currentScreenSize !== 'Small') {
+
+        <mat-grid-list class="drag-list" cols="7" rowHeight="200px" cdkDropList (cdkDropListDropped)="drop($event)">
+            @for(tile of tiles; track $index) {
+                <mat-grid-tile [colspan]="tile.cols" [rowspan]="tile.rows">
+                    <div class="flip-container" [ngClass]="{'flipped': tile.flipped, 'flipped-backward': tile.flipDirection === 'backward'}" (click)="flipCard($event, $index)">
+                        <div class="drag-box" style="width: 100%; height: auto;" cdkDrag  >
+                            @if($index === 0 || $index === 6) {
+    
+                                @if(currentScreenSize !== 'XSmall') {
+                                    <div class="custom-placeholder" *cdkDragPlaceholder 
+                                    [ngStyle]="{
+                                        'border-top-left-radius': $index === 0 ? '30px' : '0',
+                                        'border-bottom-left-radius': (($index === 0 && currentScreenSize !== 'XSmall') || (currentScreenSize === 'XSmall' && $index === 6)) ? '30px' : '0px',
+                                        'border-top-right-radius': (($index === 6 && currentScreenSize !== 'XSmall') || (currentScreenSize === 'XSmall' && $index === 0)) ? '30px' : '0px',
+                                        'border-bottom-right-radius': $index === 6 ? '30px' : '0'
+                                    }">
                                     </div>
                                 }@else {
-                                     <div class="card-content">
-                                        <div class="text-container">
-                                            <mat-card-title class="title">{{tile.type.title}}</mat-card-title>
-                                            <h4>{{$index + 1}}</h4>
-                                            <mat-card-subtitle style="padding: 2%;">{{tile.type.description}}</mat-card-subtitle>
-                                        </div>
+                                    <div class="custom-placeholder-xsmall" *cdkDragPlaceholder 
+                                    [ngStyle]="{
+                                        'border-top-left-radius': $index === 0 ? '30px' : '0',
+                                        'border-bottom-left-radius': (($index === 0 && currentScreenSize !== 'XSmall') || (currentScreenSize === 'XSmall' && $index === 6)) ? '30px' : '0px',
+                                        'border-top-right-radius': (($index === 6 && currentScreenSize !== 'XSmall') || (currentScreenSize === 'XSmall' && $index === 0)) ? '30px' : '0px',
+                                        'border-bottom-right-radius': $index === 6 ? '30px' : '0'
+                                    }">
                                     </div>
                                 }
-                            <mat-card-actions>
-                                <button class="drag-button" style="align-self: center; width: 100%;" mat-button cdkDragHandle><mat-icon>drag_handle</mat-icon></button>
-                            </mat-card-actions>                            
-                        </mat-card>
-                        }
+                                
+                                <mat-card class="dashboard-card mat-elevation-z12" matRipple
+                                    [ngStyle]="{
+                                        'border-top-left-radius': $index === 0 ? '30px' : '0',
+                                        'border-bottom-left-radius': (($index === 0 && currentScreenSize !== 'XSmall') || (currentScreenSize === 'XSmall' && $index === 6)) ? '30px' : '0px',
+                                        'border-top-right-radius': (($index === 6 && currentScreenSize !== 'XSmall') || (currentScreenSize === 'XSmall' && $index === 0)) ? '30px' : '0px',
+                                        'border-bottom-right-radius': $index === 6 ? '30px' : '0'
+                                    }">
+                                    @if(!tile.flipped) {
+                                        <div class="card-content">
+                                            <div class="image-container">
+                                                <img mat-card-image class="activity-image" [src]="'/assets/images/' + tile.type.imagePath" alt="Image representing {{ tile.type.title }}">
+                                            </div>
+                                            <div class="text-container">
+                                                <h1>{{$index + 1}}</h1>
+                                                <mat-card-title class="title">{{tile.type.title}}</mat-card-title>
+                                            </div>
+                                        </div>
+                                    }@else {
+                                        <div class="card-content">
+                                            <div class="text-container">
+                                                <mat-card-title class="title">{{tile.type.title}}</mat-card-title>
+                                                <h4>{{$index + 1}}</h4>
+                                                <mat-card-subtitle style="padding: 2%;">{{tile.type.description}}</mat-card-subtitle>
+                                            </div>
+                                        </div>
+                                    }
+                                    
+                                    <mat-card-actions>
+                                        <button class="drag-button" [ngStyle]="{
+                                            'border-top-left-radius': $index === 0 ? '30px' : '0',
+                                            'border-bottom-left-radius': (($index === 0 && currentScreenSize !== 'XSmall') || (currentScreenSize === 'XSmall' && $index === 6)) ? '30px' : '0px',
+                                            'border-top-right-radius': (($index === 6 && currentScreenSize !== 'XSmall') || (currentScreenSize === 'XSmall' && $index === 0)) ? '30px' : '0px',
+                                            'border-bottom-right-radius': $index === 6 ? '30px' : '0'
+                                          }"
+                                            
+                                         style="align-self: center; width: 100%;" mat-button cdkDragHandle
+                                         ><mat-icon>drag_handle</mat-icon></button>
+                                    </mat-card-actions>
+    
+                                </mat-card>
+                    
+                            } @else {
+                                @if(currentScreenSize !== 'XSmall') {
+                                    <div class="custom-placeholder" *cdkDragPlaceholder 
+                                    [ngStyle]="{
+                                        'border-top-left-radius': $index === 0 ? '30px' : '0',
+                                        'border-bottom-left-radius': (($index === 0 && currentScreenSize !== 'XSmall') || (currentScreenSize === 'XSmall' && $index === 6)) ? '30px' : '0px',
+                                        'border-top-right-radius': (($index === 6 && currentScreenSize !== 'XSmall') || (currentScreenSize === 'XSmall' && $index === 0)) ? '30px' : '0px',
+                                        'border-bottom-right-radius': $index === 6 ? '30px' : '0'
+                                    }">
+                                    </div>
+                                }@else {
+                                    <div class="custom-placeholder-xsmall" *cdkDragPlaceholder 
+                                    [ngStyle]="{
+                                        'border-top-left-radius': $index === 0 ? '30px' : '0',
+                                        'border-bottom-left-radius': (($index === 0 && currentScreenSize !== 'XSmall') || (currentScreenSize === 'XSmall' && $index === 6)) ? '30px' : '0px',
+                                        'border-top-right-radius': (($index === 6 && currentScreenSize !== 'XSmall') || (currentScreenSize === 'XSmall' && $index === 0)) ? '30px' : '0px',
+                                        'border-bottom-right-radius': $index === 6 ? '30px' : '0'
+                                    }">
+                                    </div>
+                                }
+                                <mat-card class="dashboard-card mat-elevation-z12" matRipple >
+                                    @if(!tile.flipped) {
+                                        <div class="card-content ">
+                                            <div class="image-container">
+                                                <img mat-card-image class="activity-image" [src]="'/assets/images/' + tile.type.imagePath" alt="Image representing {{ tile.type.title }}">
+                                            </div>
+                                            <div class="text-container">
+                                                <h1>{{$index + 1}}</h1>
+                                                <mat-card-title class="title">{{tile.type.title}}</mat-card-title>
+                                            </div>
+                                        </div>
+                                    }@else {
+                                         <div class="card-content">
+                                            <div class="text-container">
+                                                <mat-card-title class="title">{{tile.type.title}}</mat-card-title>
+                                                <h4>{{$index + 1}}</h4>
+                                                <mat-card-subtitle style="padding: 2%;">{{tile.type.description}}</mat-card-subtitle>
+                                            </div>
+                                        </div>
+                                    }
+                                <mat-card-actions>
+                                    <button class="drag-button" style="align-self: center; width: 100%;" mat-button cdkDragHandle><mat-icon>drag_handle</mat-icon></button>
+                                </mat-card-actions>                            
+                            </mat-card>
+                            }
+                        </div>
                     </div>
-                </div>
-            </mat-grid-tile>
-        }
-    </mat-grid-list>
+                </mat-grid-tile>
+            }
+        </mat-grid-list>
+
+    }
+
 
 </div>

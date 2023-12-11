@@ -71,11 +71,7 @@
 
 .three-d-container {
     width: 100%;
-    min-height: 400px;
-    background-color: white;
-    flex-shrink: 1;
-
-
+  
 }
 .title {
     color: rgba(0, 0, 0, 0.70);
@@ -104,6 +100,7 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    max-width: 98%;
 }
 
 .custom-card {
@@ -114,19 +111,27 @@
     border-radius: 30px;
 
 }
+.content-container {
+    display: flex;
+    flex-direction: column;
+}
 
 /* Media query for smaller screens - change styles for responsive layout */
 @media (max-width: 768px) {
     .responsive-container {
-        flex-direction: column-reverse; /* Change to column layout for smaller screens */
+        flex-direction: column; /* Change to column layout for smaller screens */
         align-items: center; /* Optional: Center the items */
     }
 
     .custom-card {
-        max-width: 100%; /* Set maximum width to 100% for smaller screens */
+        max-width: 90%; /* Set maximum width to 100% for smaller screens */
         margin: 2%;
         transform: none; /* Remove translateY transformation */
         border-radius: 30px;
 
+    }
+    .content-container {
+        flex-direction: column-reverse;
+      
     }
 }
