@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -35,6 +35,11 @@ export class HomeComponent {
 
   currentScreenSize: string = '';
   private destroyed = new Subject<void>();
+
+  @HostListener('touchmove', ['$event'])
+  onTouchMove(event: TouchEvent) {
+    event.preventDefault();
+  }
 
   constructor(private screenSizeService: ScreenSizeService) {
     this.screenSizeService.currentScreenSize$
