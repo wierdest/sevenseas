@@ -35,12 +35,7 @@ export class HomeComponent {
 
   currentScreenSize: string = '';
   private destroyed = new Subject<void>();
-
-  @HostListener('touchmove', ['$event'])
-  onTouchMove(event: TouchEvent) {
-    event.preventDefault();
-  }
-
+  
   constructor(private screenSizeService: ScreenSizeService) {
     this.screenSizeService.currentScreenSize$
       .pipe(takeUntil(this.destroyed))
